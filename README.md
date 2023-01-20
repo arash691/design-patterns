@@ -4,7 +4,7 @@
 
 کافیه بوسیله ی EntityManager اول unwrap اش کنید
 ```java
-SharedSessionContractImplementor sharedSession = entityManager.unwrap(SharedSessionContractImplementor.class );
+SharedSessionContractImplementor sharedSession = entityManager.unwrap(SharedSessionContractImplementor.class);
 ```
 و بعدش با getPersistenceContext رفرنس pc رو بگیرید:
 ```java
@@ -29,7 +29,7 @@ EntityEntry ee = pc.getEntry(obj);
 ```
 اگه دنبال entityName , status , hydrated State entity هستید از طریق رفرنس مربوط به EntityEntry میتونید به متد هایی که این مقادیر و برمیگردونن برسید:
 ```java
-ee.getEntityName
-ee.getStatus
-ee.getLoadedState
+ee.getEntityName();
+ee.getStatus();
+ee.getLoadedState();
 ```
