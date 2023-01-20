@@ -23,7 +23,7 @@ pc.getCollectionEntriesSize();
 pc.getEntitiesByKey();
 ```
 
-یک مپ Map<EntityKey, Object برمیگردونه که EntityKey میشه ترکیب کلاس اون Entity و مقدار کلیدی که تو دیتابیس هست ،‌ Object هم مقادیری هست که لود شده از دیتابیس :
+یک مپ <Map<EntityKey, Object برمیگردونه که EntityKey میشه ترکیب کلاس اون Entity و مقدار کلیدی که تو دیتابیس هست ،‌ Object هم مقادیری هست که لود شده از دیتابیس :
 ```
 EntityEntry ee = pc.getEntry(obj);
 ```
