@@ -1,7 +1,8 @@
 نکات مربوط به SpringData & Hibernate : 
 
 اگه از Hibernate بعنوان JPA Provider استفاده می‌کنید و نیاز دارید Persistence Context رو مانیتور کنید می تونید از SharedSessionContractImplementor کمک بگیرد.
-کافیه بوسیله ی EntityManager اول unwrap اش کنید:
+کافیه بوسیله ی EntityManager اول unwrap اش کنید
+
 ‍‍‍‍‍‍‍‍‍‍‍‍```
 SharedSessionContractImplementor sharedSession = entityManager.unwrap(SharedSessionContractImplementor.class );
 ```
