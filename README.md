@@ -1,6 +1,10 @@
-# JPA,Hibernate and Spring Data Tips.
+# Spring Data Tips and Practices.
+
 ## Table of Contents
-* [Spring Cloud Service Discovery](#spring-cloud-service-discovery)
-    * [Spring Cloud Euerka Server](#spring-cloud-eureka-server)
-    * [Spring Cloud Eureka Client](#spring-cloud-eureka-client)
-* [Spring Cloud Stream Examples](#spring-cloud-stream-examples)
+* [Entity and Association](#entity-and-accosiation)
+* [Fetching and Queries](#fetching-and-queries)
+* [Batch Operations](#batch-operations)
+* [Configuration and Connection Pool](#configuration-and-connection-pool)
+* [Monitoring and Audeting](#monitoring-and-audeting)
+* [Transaction](#transaction)
+
