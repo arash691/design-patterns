@@ -14,4 +14,9 @@ Let me know if you have any questions or suggestions.
 
 ### Entity and Accosiation
 
-
+1. what's the best way to implement a bidirectional @OneToMany association?
+   Imagine we want to map a User entity to its accounts.
+the following rules are noticeable to have a bidirectional @OneToMany association:
+  **We must always cascade from parent-side to child-site**
+  
+  
