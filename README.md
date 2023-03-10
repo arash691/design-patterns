@@ -72,7 +72,7 @@ This implementation respects the SOLID principles because:
 
 - Dependency Inversion Principle: The StripePaymentGatewayAdapter depends on abstractions (the PaymentGateway interface) rather than on concretions (the StripePaymentGateway). This makes the adapter more flexible and easier to test.
 
-### Template Method Pattern
+## Template Method Pattern
 
 Template Method Pattern is a behavioral design pattern that defines the skeleton of an algorithm in a superclass but allows subclasses to override specific steps of the algorithm without changing its structure. It is used when we have an algorithm that has several steps, some of which may be common to different subclasses, and we want to avoid duplicating code.
 
