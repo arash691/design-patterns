@@ -2,7 +2,7 @@
 
 In this tutorial, I provide a clear and concise explanation of each design pattern, including its purpose, components, and benefits. I also provide examples of how each pattern can be used in real-world scenarios, so that developers can see how they might apply these patterns to their own projects.
 
-## Adaptor Design Pattern
+## Adapter Design Pattern
 
 Adapter Pattern used to convert the interface of an existing class into another interface the client expects. This allows classes with incompatible interfaces to work together by wrapping the incompatible interface with an adapter. The adapter acts as a bridge between the two interfaces, enabling them to communicate and work together.
 
