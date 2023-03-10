@@ -166,3 +166,79 @@ public class HomeLoanProcessor extends LoanProcessor {
 ```
 
 The Template Method Pattern respects the SOLID principle of the Open/Closed Principle, as it allows us to add new loan types or new verification steps without modifying the existing loan processing algorithm. We can simply create new subclasses of LoanProcessor and override the necessary methods. It also promotes code reuse and modularity by separating the common loan processing steps from the specific loan type or verification step implementations.
+
+## Strategy Pattern
+
+The Strategy Pattern is a behavioral design pattern that allows us to define a family of algorithms, encapsulate each one as an object, and make them interchangeable at runtime. It allows us to separate the implementation details of an algorithm from its usage. This pattern promotes encapsulation, code reuse, and maintainability.
+
+In the context of a banking application, let's consider the example of calculating profit for different types of bank accounts. Each account type may have its own algorithm for calculating profit, and these algorithms may vary based on the account type. 
+For example, a savings account may have a different profit calculation algorithm than a checking account.
+
+To apply the Strategy Pattern, we first define an interface or an abstract class for the algorithm, which defines a single method that calculates the profit. Let's call this interface ProfitCalculator:
+
+```java
+public interface ProfitCalculator {
+    double calculate(double balance);
+}
+```
+Next, we create concrete implementations of the ProfitCalculator interface for each type of bank account. 
+For example, we can create a SavingsProfitCalculator and a CheckingProfitCalculator:
+
+```java
+public class SavingsProfitCalculator implements ProfitCalculator {
+    private double profitRate;
+
+    public SavingsInterestCalculator(double profitRate) {
+        this.profitRate = profitRate;
+    }
+
+    public double calculate(double balance) {
+        return balance * profitRate;
+    }
+}
+
+public class CheckingProfitCalculator implements ProfitCalculator {
+    private double overdraftPenalty;
+
+    public CheckingInterestCalculator(double overdraftPenalty) {
+        this.overdraftPenalty = overdraftPenalty;
+    }
+
+    public double calculate(double balance) {
+        if (balance < 0) {
+            return balance * overdraftPenalty;
+        } else {
+            return balance * 0.01;
+        }
+    }
+}
+```
+We can then define a BankAccount class that has an instance of the ProfitCalculator interface as one of its properties:
+
+```java
+public class BankAccount {
+    private double balance;
+    private ProfitCalculator profitCalculator;
+
+    public BankAccount(double balance, ProfitCalculator profitCalculator) {
+        this.balance = balance;
+        this.profitCalculator = profitCalculator;
+    }
+
+    public double calculateProfit() {
+        return profitCalculator.calculate(balance);
+    }
+}
+```
+The BankAccount class now has the flexibility to calculate profit using different algorithms based on the type of account. We can create a SavingsAccount and a CheckingAccount by passing in the appropriate ProfitCalculator:
+
+```java
+ProfitCalculator savingsProfitCalculator = new SavingsInterestCalculator(0.05);
+BankAccount savingsAccount = new BankAccount(1000, savingsProfitCalculator);
+
+ProfitCalculator checkingProfitCalculator = new CheckingProfitCalculator(0.10);
+BankAccount checkingAccount = new BankAccount(-500, checkingProfitCalculator);
+```
+This approach allows us to decouple the profit calculation algorithm from the bank account class and makes it easy to add new algorithms in the future. It also promotes code reuse, as we can reuse the same profit calculation algorithms across different account types.
+
+The Strategy Pattern respects the SOLID principle of the Open/Closed Principle, as it allows us to add new profit calculation algorithms without modifying the existing BankAccount class. We can simply create new implementations of the ProfitCalculator interface and pass them into the BankAccount constructor. It also promotes the Single Responsibility Principle, as each algorithm is encapsulated in its own class, and the BankAccount class is only responsible for using the algorithm to calculate profit.
