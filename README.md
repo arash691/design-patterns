@@ -72,8 +72,4 @@ This implementation respects the SOLID principles because:
 
 - Dependency Inversion Principle: The StripePaymentGatewayAdapter depends on abstractions (the PaymentGateway interface) rather than on concretions (the StripePaymentGateway). This makes the adapter more flexible and easier to test.
 
-Another example of Adapter pattern used in Spring MVC is _HandlerAdapter_ interface. It allows the Spring MVC framework to adapt different types of controller classes to a common interface, making it easier to write new controllers and add them to the framework without modifying the existing code.
-
-In the Spring MVC framework, the controller classes are responsible for handling HTTP requests and returning a response. However, there are many different types of controller classes that can be used, each with their own specific way of handling requests and producing responses.
-
-To allow the framework to work with any type of controller class, the _HandlerAdapter_ interface defines a common interface that all controllers must implement. This allows the framework to "adapt" different controller types to the common interface, making it possible to use them interchangeably.
+Another example is the Spring _HandlerAdapter_ interface, which is used in the Spring MVC (Model-View-Controller) web framework. The _HandlerAdapter_ interface defines a common interface for all controllers in the framework, allowing the framework to adapt different types of controllers to a common interface. This makes it easier to write new controllers and add them to the framework without modifying the existing code.
