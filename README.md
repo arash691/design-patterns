@@ -2,7 +2,7 @@
 
 In this tutorial, I provide a clear and concise explanation of each design pattern, including its purpose, components, and benefits. I also provide examples of how each pattern can be used in real-world scenarios, so that developers can see how they might apply these patterns to their own projects.
 
-## Adapter Design Pattern
+## Adapter Pattern
 
 Adapter Pattern used to convert the interface of an existing class into another interface the client expects. This allows classes with incompatible interfaces to work together by wrapping the incompatible interface with an adapter. The adapter acts as a bridge between the two interfaces, enabling them to communicate and work together.
 
@@ -72,3 +72,97 @@ This implementation respects the SOLID principles because:
 
 - Dependency Inversion Principle: The StripePaymentGatewayAdapter depends on abstractions (the PaymentGateway interface) rather than on concretions (the StripePaymentGateway). This makes the adapter more flexible and easier to test.
 
+### Template Method Pattern
+
+Template Method Pattern is a behavioral design pattern that defines the skeleton of an algorithm in a superclass but allows subclasses to override specific steps of the algorithm without changing its structure. It is used when we have an algorithm that has several steps, some of which may be common to different subclasses, and we want to avoid duplicating code.
+
+Let's take an example in the context of a Bank application. 
+Suppose we have a Bank class with a method called "processLoan". The processLoan method performs a series of steps to approve or reject a loan application. These steps include verifying the applicant's credit score, income, and employment status. However, the specific details of how these verifications are performed may vary depending on the type of loan and the bank's policies.
+
+To implement the Template Method Pattern, we would create an abstract class called "LoanProcessor" that defines the skeleton of the loan processing algorithm. This abstract class would have a method called "processLoan" that calls several other abstract methods, such as "checkCreditScore", "checkIncome", and "checkEmploymentStatus". These abstract methods would be implemented by concrete subclasses of "LoanProcessor" for different types of loans and different bank policies.
+
+Here's an example implementation:
+
+```java
+public abstract class LoanProcessor {
+    
+    public final boolean processLoan(LoanApplication loanApplication) {
+        if (!checkEligibility(loanApplication)) {
+            return false;
+        }
+        
+        if (!checkCreditScore(loanApplication)) {
+            return false;
+        }
+        
+        if (!checkIncome(loanApplication)) {
+            return false;
+        }
+        
+        if (!checkEmploymentStatus(loanApplication)) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    protected abstract boolean checkEligibility(LoanApplication loanApplication);
+    
+    protected abstract boolean checkCreditScore(LoanApplication loanApplication);
+    
+    protected abstract boolean checkIncome(LoanApplication loanApplication);
+    
+    protected abstract boolean checkEmploymentStatus(LoanApplication loanApplication);
+}
+```
+In this example, the LoanProcessor class defines the template method "processLoan" and several abstract methods that must be implemented by concrete subclasses. The concrete subclasses, such as PersonalLoanProcessor and HomeLoanProcessor, implement the abstract methods to perform the specific checks required for each loan type:
+
+```java
+public class PersonalLoanProcessor extends LoanProcessor {
+    
+    @Override
+    protected boolean checkEligibility(LoanApplication loanApplication) {
+        // implementation specific to personal loans
+    }
+    
+    @Override
+    protected boolean checkCreditScore(LoanApplication loanApplication) {
+        // implementation specific to personal loans
+    }
+    
+    @Override
+    protected boolean checkIncome(LoanApplication loanApplication) {
+        // implementation specific to personal loans
+    }
+    
+    @Override
+    protected boolean checkEmploymentStatus(LoanApplication loanApplication) {
+        // implementation specific to personal loans
+    }
+}
+
+public class HomeLoanProcessor extends LoanProcessor {
+    
+    @Override
+    protected boolean checkEligibility(LoanApplication loanApplication) {
+        // implementation specific to home loans
+    }
+    
+    @Override
+    protected boolean checkCreditScore(LoanApplication loanApplication) {
+        // implementation specific to home loans
+    }
+    
+    @Override
+    protected boolean checkIncome(LoanApplication loanApplication) {
+        // implementation specific to home loans
+    }
+    
+    @Override
+    protected boolean checkEmploymentStatus(LoanApplication loanApplication) {
+        // implementation specific to home loans
+    }
+}
+```
+
+The Template Method Pattern respects the SOLID principle of the Open/Closed Principle, as it allows us to add new loan types or new verification steps without modifying the existing loan processing algorithm. We can simply create new subclasses of LoanProcessor and override the necessary methods. It also promotes code reuse and modularity by separating the common loan processing steps from the specific loan type or verification step implementations.
