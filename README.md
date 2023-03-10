@@ -72,4 +72,3 @@ This implementation respects the SOLID principles because:
 
 - Dependency Inversion Principle: The StripePaymentGatewayAdapter depends on abstractions (the PaymentGateway interface) rather than on concretions (the StripePaymentGateway). This makes the adapter more flexible and easier to test.
 
-Another example is the Spring _HandlerAdapter_ interface, which is used in the Spring MVC (Model-View-Controller) web framework. The _HandlerAdapter_ interface defines a common interface for all controllers in the framework, allowing the framework to adapt different types of controllers to a common interface. This makes it easier to write new controllers and add them to the framework without modifying the existing code.
